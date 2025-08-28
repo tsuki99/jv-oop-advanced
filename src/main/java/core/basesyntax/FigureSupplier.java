@@ -5,11 +5,11 @@ import java.util.Random;
 public class FigureSupplier {
     private static final int MAX_VALUE = 10;
     private static final int FIGURES_COUNT = 5;
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
     private static final ColorSupplier colorSupplier = new ColorSupplier();
 
     public Figure getRandomFigure() {
-        int indexOfFigure = random.nextInt(FIGURES_COUNT);
+        int indexOfFigure = RANDOM.nextInt(FIGURES_COUNT);
 
         return switch (indexOfFigure) {
             case 1 -> getRandomIsoscelesTrapezoid();
@@ -24,32 +24,36 @@ public class FigureSupplier {
         return new Circle(Color.WHITE.name(), MAX_VALUE);
     }
 
+    private int getRandomSize() {
+        return RANDOM.nextInt(MAX_VALUE);
+    }
+
     private Circle getRandomCircle() {
         return new Circle(colorSupplier.getRandomColor(),
-                random.nextInt(MAX_VALUE));
+                getRandomSize());
     }
 
     private IsoscelesTrapezoid getRandomIsoscelesTrapezoid() {
         return new IsoscelesTrapezoid(colorSupplier.getRandomColor(),
-                random.nextInt(MAX_VALUE),
-                random.nextInt(MAX_VALUE),
-                random.nextInt(MAX_VALUE));
+                getRandomSize(),
+                getRandomSize(),
+                getRandomSize());
     }
 
     private Rectangle getRandomRectangle() {
         return new Rectangle(colorSupplier.getRandomColor(),
-                random.nextInt(MAX_VALUE),
-                random.nextInt(MAX_VALUE));
+                getRandomSize(),
+                getRandomSize());
     }
 
     private RightTriangle getRandomRightTriangle() {
         return new RightTriangle(colorSupplier.getRandomColor(),
-                random.nextInt(MAX_VALUE),
-                random.nextInt(MAX_VALUE));
+                getRandomSize(),
+                getRandomSize());
     }
 
     private Square getRandomSquare() {
         return new Square(colorSupplier.getRandomColor(),
-                random.nextInt(MAX_VALUE));
+                getRandomSize());
     }
 }

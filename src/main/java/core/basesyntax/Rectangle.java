@@ -10,12 +10,20 @@ public class Rectangle extends Figure {
         this.height = height;
     }
 
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
     @Override
     public void draw() {
         System.out.println("Rectangle: "
                 + "color: " + getColor()
-                + ", width: " + width
-                + ", height: " + height
+                + ", width: " + getWidth()
+                + ", height: " + getHeight()
                 + ", area: " + getArea());
     }
 
@@ -23,21 +31,5 @@ public class Rectangle extends Figure {
     double getArea() {
         double area = width * height;
         return Math.round(area * NUMBER_FOR_ROUND) / NUMBER_FOR_ROUND;
-    }
-
-    public double getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
     }
 }
